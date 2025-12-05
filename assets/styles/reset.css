@@ -1,34 +1,35 @@
-* {
-    margin: 0;
-    padding: 0;
+/* CSS Reset */
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: #333;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 1rem 0;
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
 }
 
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
+input, button, textarea, select {
+    font: inherit;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
 }
 
-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+#root, #__next {
+    isolation: isolate;
 }
