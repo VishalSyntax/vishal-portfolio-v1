@@ -1,7 +1,11 @@
-// Main entry point for webpack
-import './styles/reset.css';
-import './styles/main.css';
-import './scripts/form-validation.js';
-import './scripts/main.js';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
 
-console.log('Portfolio application loaded');
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
