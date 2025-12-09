@@ -1,28 +1,27 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-const Header = ({ personalInfo, activeSection, setActiveSection }) => {
-    const navItems = ['home', 'about', 'skills', 'contact'];
-    
-    const handleNavClick = (section) => {
-        setActiveSection(section);
-    };
+const Header = () => {
+    const location = useLocation();
+    const navItems = [
+        { path: '/', label: 'Home' },
+        { path: '/about', label: 'About' },
+        { path: '/skills', label: 'Skills' },
+        { path: '/contact', label: 'Contact' }
+    ];
     
     return (
         <header className="header">
             <nav>
                 <ul>
                     {navItems.map(item => (
-                        <li key={item}>
-                            <a 
-                                href={`#${item}`}
-                                className={activeSection === item ? 'active' : ''}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    handleNavClick(item);
-                                }}
+                        <li key={item.path}>
+                            <Link 
+                                to={item.path}
+                                className={location.pathname === item.path ? 'active' : ''}
                             >
-                                {item.charAt(0).toUpperCase() + item.slice(1)}
-                            </a>
+                                {item.label}
+                            </Link>
                         </li>
                     ))}
                 </ul>

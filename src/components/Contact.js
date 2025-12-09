@@ -1,61 +1,44 @@
 import React, { useState } from 'react';
+import { useFormValidation } from '../hooks/useFormValidation';
 
 const Contact = ({ personalInfo }) => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-    
-    const [errors, setErrors] = useState({});
     const [success, setSuccess] = useState(false);
     
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        if (errors[name]) {
-            setErrors(prev => ({
-                ...prev,
-                [name]: ''
-            }));
+    const validate = (values) => {
+        const errors = {};
+        
+        if (!values.name.trim()) {
+            errors.name = 'Name is required';
         }
+        
+        if (!values.email.trim()) {
+            errors.email = 'Email is required';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+            errors.email = 'Invalid email format';
+        }
+        
+        if (!values.message.trim()) {
+            errors.message = 'Message is required';
+        }
+        
+        return errors;
     };
     
-    const validateForm = () => {
-        const newErrors = {};
-        
-        if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
-        }
-        
-        if (!formData.email.trim()) {
-            newErrors.email = 'Email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = 'Invalid email format';
-        }
-        
-        if (!formData.message.trim()) {
-            newErrors.message = 'Message is required';
-        }
-        
-        return newErrors;
-    };
+    const {
+        values,
+        errors,
+        handleChange,
+        handleSubmit,
+        resetForm
+    } = useFormValidation(
+        { name: '', email: '', message: '' },
+        validate
+    );
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        const newErrors = validateForm();
-        
-        if (Object.keys(newErrors).length === 0) {
-            setSuccess(true);
-            setFormData({ name: '', email: '', message: '' });
-            setTimeout(() => setSuccess(false), 3000);
-        } else {
-            setErrors(newErrors);
-        }
+    const onSubmit = () => {
+        setSuccess(true);
+        resetForm();
+        setTimeout(() => setSuccess(false), 3000);
     };
     
     return (
@@ -63,14 +46,14 @@ const Contact = ({ personalInfo }) => {
             <div className="container">
                 <h2>Contact Me</h2>
                 <div className="card">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                             <label htmlFor="name">Name:</label>
                             <input
                                 type="text"
                                 id="name"
                                 name="name"
-                                value={formData.name}
+                                value={values.name}
                                 onChange={handleChange}
                             />
                             {errors.name && <span className="error">{errors.name}</span>}
@@ -82,7 +65,7 @@ const Contact = ({ personalInfo }) => {
                                 type="email"
                                 id="email"
                                 name="email"
-                                value={formData.email}
+                                value={values.email}
                                 onChange={handleChange}
                             />
                             {errors.email && <span className="error">{errors.email}</span>}
@@ -94,7 +77,7 @@ const Contact = ({ personalInfo }) => {
                                 id="message"
                                 name="message"
                                 rows="5"
-                                value={formData.message}
+                                value={values.message}
                                 onChange={handleChange}
                             />
                             {errors.message && <span className="error">{errors.message}</span>}
