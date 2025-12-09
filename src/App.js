@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
-import About from './components/About';
-import Skills from './components/Skills';
-import Contact from './components/Contact';
+import Home from './pages/Home';
+import AboutPage from './pages/AboutPage';
+import SkillsPage from './pages/SkillsPage';
+import ContactPage from './pages/ContactPage';
+import { useLocalStorage } from './hooks/useLocalStorage';
 import './App.css';
 
 function App() {
+    const [theme, setTheme] = useLocalStorage('theme', 'light');
     const [activeSection, setActiveSection] = useState('home');
     
     const personalInfo = {
@@ -16,31 +20,33 @@ function App() {
     };
     
     const skills = [
-        'Java', 'Spring Boot', 'React', 'MySQL', 
-        'JavaScript', 'HTML5', 'CSS3', 'Bootstrap'
+        'React', 'JavaScript', 'HTML5', 'CSS3', 
+        'Bootstrap', 'Webpack', 'Babel'
     ];
     
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
+    
     return (
-        <div className="App">
-            <Header 
-                personalInfo={personalInfo}
-                activeSection={activeSection}
-                setActiveSection={setActiveSection}
-            />
-            <main>
-                <section id="home" className="hero-section">
-                    <div className="container">
-                        <h1>{personalInfo.name}</h1>
-                        <p className="lead">{personalInfo.title}</p>
-                        <p>Building modern web applications with passion</p>
-                    </div>
-                </section>
-                
-                {activeSection === 'about' && <About personalInfo={personalInfo} />}
-                {activeSection === 'skills' && <Skills skills={skills} />}
-                {activeSection === 'contact' && <Contact personalInfo={personalInfo} />}
-            </main>
-        </div>
+        <Router>
+            <div className="App">
+                <Header 
+                    personalInfo={personalInfo}
+                    activeSection={activeSection}
+                    setActiveSection={setActiveSection}
+                />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home personalInfo={personalInfo} />} />
+                        <Route path="/about" element={<AboutPage personalInfo={personalInfo} />} />
+                        <Route path="/skills" element={<SkillsPage skills={skills} />} />
+                        <Route path="/contact" element={<ContactPage personalInfo={personalInfo} />} />
+                        <Route path="*" element={<Navigate to="/" replace />} />
+                    </Routes>
+                </main>
+            </div>
+        </Router>
     );
 }
 
