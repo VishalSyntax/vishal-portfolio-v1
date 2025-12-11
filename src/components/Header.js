@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
     const location = useLocation();
@@ -24,6 +25,9 @@ const Header = () => {
                             </Link>
                         </li>
                     ))}
+                    <li>
+                        <ThemeToggle />
+                    </li>
                 </ul>
             </nav>
         </header>
