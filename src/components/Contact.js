@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useFormValidation } from '../hooks/useFormValidation';
+import { usePortfolio } from '../context/PortfolioContext';
 
-const Contact = ({ personalInfo }) => {
+const Contact = () => {
+    const { state } = usePortfolio();
     const [success, setSuccess] = useState(false);
     
     const validate = (values) => {
