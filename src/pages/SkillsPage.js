@@ -1,8 +1,8 @@
 import React from 'react';
 import Skills from '../components/Skills';
 
-const SkillsPage = ({ skills }) => {
-    return <Skills skills={skills} />;
+const SkillsPage = () => {
+    return <Skills />;
 };
 
 export default SkillsPage;
