@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useFormValidation } from '../hooks/useFormValidation';
 import { usePortfolio } from '../context/PortfolioContext';
 
@@ -46,8 +47,19 @@ const Contact = () => {
     return (
         <section id="contact" className="section">
             <div className="container">
-                <h2>Contact Me</h2>
-                <div className="card">
+                <motion.h2
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    Contact Me
+                </motion.h2>
+                <motion.div
+                    className="card"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                             <label htmlFor="name">Name:</label>
@@ -85,12 +97,24 @@ const Contact = () => {
                             {errors.message && <span className="error">{errors.message}</span>}
                         </div>
                         
-                        <button type="submit" className="btn">Send Message</button>
+                        <motion.button
+                            type="submit"
+                            className="btn"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            Send Message
+                        </motion.button>
                         
                         {success && (
-                            <div className="success-message">
+                            <motion.div
+                                className="success-message"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                            >
                                 Message sent successfully!
-                            </div>
+                            </motion.div>
                         )}
                     </form>
                 </div>
