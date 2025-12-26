@@ -7,6 +7,12 @@ import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
 import SkillsPage from './pages/SkillsPage';
 import ContactPage from './pages/ContactPage';
+import Projects from './pages/Projects';
+import Gallery from './pages/Gallery';
+import Certificates from './pages/Certificates';
+import Blog from './pages/Blog';
+import Resume from './pages/Resume';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function AppContent() {
@@ -40,16 +46,31 @@ function AppContent() {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}
+                    style={{ flex: 1 }}
                 >
                     <Routes location={location}>
                         <Route path="/" element={<Home />} />
-                        <Route path="/about" element={<AboutPage />} />
+                        <Route path="/projects" element={<Projects />} />
+                        <Route path="/gallery" element={<Gallery />} />
                         <Route path="/skills" element={<SkillsPage />} />
+                        <Route path="/certificates" element={<Certificates />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/resume" element={<Resume />} />
+                        <Route path="/about" element={<AboutPage />} />
                         <Route path="/contact" element={<ContactPage />} />
-                        <Route path="*" element={<Navigate to="/" replace />} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </motion.main>
             </AnimatePresence>
+            <footer className="footer" style={{
+                textAlign: 'center',
+                padding: '1rem',
+                borderTop: '1px solid rgba(255,255,255,0.1)',
+                background: 'rgba(0,0,0,0.3)',
+                color: '#888'
+            }}>
+                © {new Date().getFullYear()} Vishal Damodar — Built with React
+            </footer>
         </div>
     );
 }
