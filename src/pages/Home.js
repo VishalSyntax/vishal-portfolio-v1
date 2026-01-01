@@ -97,11 +97,11 @@ const Home = () => {
                 {/* Hero Section */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
+                    gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr',
                     gap: '4rem',
                     alignItems: 'center',
                     minHeight: '80vh'
-                }}>
+                }} className="mobile-stack">
                     {/* Left Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
