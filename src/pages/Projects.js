@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useResponsive } from '../hooks/useResponsive';
 
 const Projects = () => {
+    const { isMobile } = useResponsive();
     const projects = [
         {
             id: 1,
@@ -66,7 +68,7 @@ const Projects = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                    gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(350px, 1fr))',
                     gap: '2rem',
                     padding: '1rem'
                 }}>
