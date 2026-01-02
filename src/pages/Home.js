@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { usePortfolio } from '../context/PortfolioContext';
+import SEO from '../components/SEO';
 
 const Home = () => {
     const { state } = usePortfolio();
@@ -38,12 +39,19 @@ const Home = () => {
     }, []);
     
     return (
-        <div style={{
-            minHeight: '100vh',
-            background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)',
-            position: 'relative',
-            overflow: 'hidden'
-        }}>
+        <>
+            <SEO 
+                title="Vishal Damodar - Java Full Stack Developer | Portfolio"
+                description="Experienced Java Full Stack Developer from Pune, specializing in Spring Boot, React, and modern web technologies. View my projects and get in touch for collaboration."
+                keywords="Vishal Damodar, Java Developer, Full Stack Developer, Spring Boot, React, JavaScript, Web Development, Software Engineer, Pune, Maharashtra"
+                url="https://vishaldamodar.dev/"
+            />
+            <div style={{
+                minHeight: '100vh',
+                background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)',
+                position: 'relative',
+                overflow: 'hidden'
+            }}>
             {/* Animated Background Elements */}
             <motion.div
                 animate={{
@@ -349,7 +357,7 @@ const Home = () => {
                     ))}
                 </motion.div>
             </div>
-        </div>
+        </>
     );
 };
 
