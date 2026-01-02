@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useResponsive } from '../hooks/useResponsive';
+import SEO from '../components/SEO';
 
 const Projects = () => {
     const { isMobile } = useResponsive();
@@ -38,11 +39,18 @@ const Projects = () => {
     ];
 
     return (
-        <div style={{ 
-            minHeight: '100vh', 
-            padding: '2rem',
-            background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)'
-        }}>
+        <>
+            <SEO 
+                title="Projects - Vishal Damodar | Java Full Stack Developer"
+                description="Explore my portfolio of Java Spring Boot and React projects. Full-stack web applications, e-commerce platforms, and modern web solutions."
+                keywords="Java Projects, Spring Boot Projects, React Projects, Full Stack Projects, Web Development Portfolio, E-commerce, Task Management"
+                url="https://vishaldamodar.dev/projects"
+            />
+            <div style={{ 
+                minHeight: '100vh', 
+                padding: '2rem',
+                background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)'
+            }}>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -202,6 +210,7 @@ const Projects = () => {
                 </div>
             </motion.div>
         </div>
+        </>
     );
 };
 
