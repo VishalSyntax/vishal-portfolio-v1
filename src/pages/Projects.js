@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useResponsive } from '../hooks/useResponsive';
 import SEO from '../components/SEO';
+import LazySection from '../components/LazySection';
+import OptimizedImage from '../components/OptimizedImage';
 
 const Projects = () => {
     const { isMobile } = useResponsive();
@@ -74,12 +76,14 @@ const Projects = () => {
                     My Projects
                 </motion.h1>
 
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(350px, 1fr))',
-                    gap: '2rem',
-                    padding: '1rem'
-                }}>
+                <LazySection
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(350px, 1fr))',
+                        gap: '2rem',
+                        padding: '1rem'
+                    }}
+                >
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
@@ -96,20 +100,18 @@ const Projects = () => {
                                 color: 'white'
                             }}
                         >
-                            <div style={{
-                                width: '100%',
-                                height: '200px',
-                                background: 'linear-gradient(45deg, #00d4ff20, #ff6b6b20)',
-                                borderRadius: '10px',
-                                marginBottom: '1rem',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: '3rem',
-                                color: '#00d4ff'
-                            }}>
-                                💻
-                            </div>
+                            <OptimizedImage
+                                src={project.image}
+                                alt={project.title}
+                                width="100%"
+                                height="200px"
+                                style={{
+                                    borderRadius: '10px',
+                                    marginBottom: '1rem',
+                                    background: 'linear-gradient(45deg, #00d4ff20, #ff6b6b20)'
+                                }}
+                                placeholder="blur"
+                            />
 
                             <div style={{
                                 display: 'flex',
@@ -207,7 +209,7 @@ const Projects = () => {
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </LazySection>
             </motion.div>
         </div>
         </>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LazySection from '../components/LazySection';
+import OptimizedImage from '../components/OptimizedImage';
 
 const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -123,8 +125,7 @@ const Gallery = () => {
                 </motion.div>
 
                 {/* Gallery Grid */}
-                <motion.div
-                    layout
+                <LazySection
                     style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -152,18 +153,16 @@ const Gallery = () => {
                                     cursor: 'pointer'
                                 }}
                             >
-                                <div style={{
-                                    width: '100%',
-                                    height: '250px',
-                                    background: 'linear-gradient(45deg, #00d4ff20, #ff6b6b20)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontSize: '4rem',
-                                    color: '#00d4ff'
-                                }}>
-                                    📸
-                                </div>
+                                <OptimizedImage
+                                    src={item.image}
+                                    alt={item.title}
+                                    width="100%"
+                                    height="250px"
+                                    style={{
+                                        background: 'linear-gradient(45deg, #00d4ff20, #ff6b6b20)'
+                                    }}
+                                    placeholder="blur"
+                                />
                                 
                                 <div style={{ padding: '1.5rem' }}>
                                     <div style={{
@@ -195,7 +194,7 @@ const Gallery = () => {
                             </motion.div>
                         ))}
                     </AnimatePresence>
-                </motion.div>
+                </LazySection>
 
                 {/* Modal for selected image */}
                 <AnimatePresence>
