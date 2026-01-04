@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { PortfolioProvider, usePortfolio } from './context/PortfolioContext';
+import ErrorBoundary from './components/ErrorBoundary';
 import Header from './components/Header';
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
