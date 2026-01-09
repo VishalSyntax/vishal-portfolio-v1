@@ -1,15 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vishal Damodar — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Portfolio</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .app { min-height: 100vh; display: flex; flex-direction: column; }
+        .navbar { background: #333; color: white; padding: 1rem; }
+        .navbar a { color: white; text-decoration: none; margin: 0 1rem; }
+        .footer { background: #333; color: white; text-align: center; padding: 1rem; }
+        main { flex: 1; padding: 2rem; }
+    </style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+        
+        function Navbar() {
+            return (
+                <nav className="navbar">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            );
+        }
+        
+        function Home() {
+            return (
+                <div>
+                    <h1>Welcome to Vishal's Portfolio</h1>
+                    <p>Java Full Stack Developer from Pune, Maharashtra</p>
+                </div>
+            );
+        }
+        
+        function App() {
+            return (
+                <div className="app">
+                    <Navbar />
+                    <main>
+                        <Home />
+                    </main>
+                    <footer className="footer">
+                        © {new Date().getFullYear()} Vishal Damodar — Built with React
+                    </footer>
+                </div>
+            );
+        }
+        
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
 </body>
 </html>
