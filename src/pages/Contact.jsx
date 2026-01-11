@@ -67,12 +67,12 @@ export default function Contact() {
   };
 
   const quickLinks = [
-    { img: githubLogo, title: "GitHub", link: "https://github.com/vishaldamodar" },
-    { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/vishal-damodar/" },
-    { img: gmailLogo, title: "Email", link: "mailto:vishaldamodar@gmail.com" },
-    { img: whatsappLogo, title: "WhatsApp", link: "https://wa.me/+919876543210" },
-    { img: instagramLogo, title: "Instagram", link: "https://www.instagram.com/vishal_damodar/" },
-    { img: facebookLogo, title: "Facebook", link: "https://www.facebook.com/vishal.damodar" },
+    { img: githubLogo, title: "GitHub", link: "https://github.com/VishalSyntax" },
+    { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/vishal0x//" },
+    { img: gmailLogo, title: "Email", link: "mailto:thatvishal007@gmail.com" },
+    { img: whatsappLogo, title: "WhatsApp", link: "https://wa.me/+919579575606" },
+    { img: instagramLogo, title: "Instagram", link: "https://www.instagram.com/thatvishal007/" },
+    { img: facebookLogo, title: "Facebook", link: "https://www.facebook.com/vxals" },
   ];
 
   return (
