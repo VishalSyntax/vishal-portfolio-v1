@@ -1,63 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishal Portfolio</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        .app { min-height: 100vh; display: flex; flex-direction: column; }
-        .navbar { background: #333; color: white; padding: 1rem; }
-        .navbar a { color: white; text-decoration: none; margin: 0 1rem; }
-        .footer { background: #333; color: white; text-align: center; padding: 1rem; }
-        main { flex: 1; padding: 2rem; }
-    </style>
-</head>
-<body>
-    <div id="root"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vishal Damodar - Java Full Stack Developer</title>
+    <meta name="description" content="Vishal Damodar - Java Full Stack Developer specializing in Spring Boot, React, and modern web technologies. Building scalable enterprise applications." />
+    <meta name="keywords" content="Java, Spring Boot, React, Full Stack Developer, Web Development, Vishal Damodar" />
+    <meta name="author" content="Vishal Damodar" />
     
-    <script type="text/babel">
-        const { useState } = React;
-        
-        function Navbar() {
-            return (
-                <nav className="navbar">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            );
-        }
-        
-        function Home() {
-            return (
-                <div>
-                    <h1>Welcome to Vishal's Portfolio</h1>
-                    <p>Java Full Stack Developer from Pune, Maharashtra</p>
-                </div>
-            );
-        }
-        
-        function App() {
-            return (
-                <div className="app">
-                    <Navbar />
-                    <main>
-                        <Home />
-                    </main>
-                    <footer className="footer">
-                        © {new Date().getFullYear()} Vishal Damodar — Built with React
-                    </footer>
-                </div>
-            );
-        }
-        
-        ReactDOM.render(<App />, document.getElementById('root'));
-    </script>
-</body>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vishaldamodar.dev/" />
+    <meta property="og:title" content="Vishal Damodar - Java Full Stack Developer" />
+    <meta property="og:description" content="Java Full Stack Developer specializing in Spring Boot, React, and modern web technologies." />
+    <meta property="og:image" content="/vishal.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://vishaldamodar.dev/" />
+    <meta property="twitter:title" content="Vishal Damodar - Java Full Stack Developer" />
+    <meta property="twitter:description" content="Java Full Stack Developer specializing in Spring Boot, React, and modern web technologies." />
+    <meta property="twitter:image" content="/vishal.jpg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
